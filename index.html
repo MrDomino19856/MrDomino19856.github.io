@@ -1,7 +1,130 @@
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Waste Management by Dominic Jones</title>
+  <link href="https://fonts.googleapis.com/css?family=Cute+Font&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="Assets/css/Main.css">
+  <script type="text/javascript" src="Assets/Javascript/Main.js"></script>
+</head>
+
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+  <header>
+    <h1 class="logo"><img src="https://www.rhylhigh.denbighshire.sch.uk/images/rhs-logo-u753.png?crc=3879529566" class="logo" alt="NavBar" width="4%"></h1>
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <h1 id="Title">Waste Management</h1>
+
+    <nav>
+      <ul>
+
+        <button class = "navbutton" onclick="HomePage()">Home Page</button>
+        <button class = "navbutton" onclick="About()">About</button>
+        <button class = "navbutton" onclick="Images()">Images</button>
+        <button class = "navbutton" onclick="usefulLinks()">Links</button>
+
+      </ul>
+    </nav>
+    <label for="nav-toggle" class="nav-toggle-label">
+		<span></span>
+	</label>
+  </header>
+
+  <div onload="imageloadnum()"class="Home_content" id="Home_content">
+    <h1 style="height: -200px;"> this needs to stop.</h1>
+
+    <h3 style="height: -200px;">roughly 14 billion pounds of litter is dumped into the ocean each year. We are doing this. Think about all those aquatic creatures out there, of which the majority havn't even been discovered. All these animals are being invaded by all our litter, and most people are oblivious to it.</h3>
+    <button class = "screenButton" onclick="usefulLinks()">DO SOMETHING ABOUT IT!</button>
+
+  </div>
+
+  <div class="About_content" id="About_content">
+    <p>Hello. My name is Dominic Jones, i spent 10 hours with this project, much longer behind the scenes actually learning the html, javascript, and the CSS that fits into this one little project.<br>Along the way i've learned a lot, maybe not enough to recreate this website made (because it was somewhat rushed), however i could possibly recreate it without the fancy little details added. <br><br>
+    The reason i've put this chunk of effort into creating this website was to make you aware of waste management, why it's so important, and the consequences of this issue.
+    <br><br>
+    I'm not entirely sure what else to say here to be honest. Have a good day/evening i suppose ¯\_(ツ)_/¯</p>
+    <h4 style="Color:rgba(255,255,255,0.2); text-decoration: underline;">you're still reading? shouldn't you be out there doing your part?</h4>
+
+  </div>
+
+  <div class="Images_content" id="Images_content">
+
+    <div class="overlay">
+      <div class="overlay-inner">
+
+        <button class="close">x close</button>
+        <img>
+
+      </div>
+    </div>
+    
+    <section class="gallery">
+      
+    </section>
+
+      <script>
+        const gallery = document.querySelector('.gallery');
+        const overlay = document.querySelector('.overlay');
+        const overlayImage = overlay.querySelector('img');
+        const overlayClose = overlay.querySelector('.close');
+
+        function generateHTML([h, v]) {
+          return `
+            <div class="item h${h} v${v}">
+              <img src="Assets/images/img${randomImgNumber(11)}.jpg">
+
+              <div class="item_overlay">
+                <button>view →</button>
+              </div>
+            </div>
+          `;
+        }
+
+        function randomImgNumber(limit) {
+          return Math.floor(Math.random() * limit) + 1;
+        }
+
+        function handleClick(event) {
+          const source = event.currentTarget.querySelector('img').src;
+          overlayImage.src = source;
+          overlay.classList.add('open')
+        }
+
+        function openimg() {
+          overlay.classList.add('open')
+        }
+
+        function closeimg() {
+          overlay.classList.remove('open');
+
+        }
+
+        const ImgDigits = Array.from({ length: 11 }, () => 
+          [randomImgNumber(3), randomImgNumber(3)]).concat([[1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1]]);
+
+        const mapIMG = ImgDigits.map(generateHTML).join('');
+        gallery.innerHTML = mapIMG;
+
+        const items = document.querySelectorAll('.item');
+
+        items.forEach(item => item.addEventListener('click', handleClick));
+
+        overlayClose.addEventListener('click', closeimg)
+      </script>
+  </div>
+  
+  <div class="Links_content" id="Links_content">
+        
+        <h1> Useful Links </h1>
+        <h2 style="background-color: rgba(255,255,255,0.2);"><a href="https://www.denbighshire.gov.uk/en/resident/bins-and-recycling/recycling-and-waste-disposal.aspx">Denbighshire County Council</h2>
+	      <h2 style="background-color: rgba(255,255,255,0.2);"><a href="https://www.gov.uk/browse/environment-countryside/recycling-waste-management">Gov.uk</h2>
+	      <h2 style="background-color: rgba(255,255,255,0.2);"><a href="https://www.veolia.co.uk/services/waste-management">Veolia</h2>
+      	<h2 style="background-color: rgba(255,255,255,0.2);"><a href="http://www.wastecare.co.uk">Waste Care</h2>
+	
+	
+  </div>
 </body>
+
 </html>
