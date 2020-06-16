@@ -8,7 +8,7 @@
     font-family: "Noto Sans JP", sans-serif;
 }
 .btn{
-    position: absolute;
+    position: fixed;
     top: 15px;
     left: 45px;
     height: 45px;
@@ -21,7 +21,6 @@
 }
 .btn.click{
     left: 260px;
-
 }
 .btn span{
     color: white;
@@ -83,7 +82,6 @@ nav ul li.active a{
 
 }
 nav ul ul {
-    position: static;
     display: none;
 }
 nav ul .user-show.show3{
@@ -128,16 +126,40 @@ nav ul li a span.rotate {
     transform: translateY(-50%) rotate(-180deg);
 
 }
-.top-screen{
-    width: 100%;
+
+.header {
     text-align: center;
+    padding-top: 50px;
+    padding-bottom: 20px;
 }
-.main-screen{
-    margin: auto;
-    height: 100%;
-    width: 75%;
-    border: none;
-    border-radius: 100px;
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+.side {
+    flex: 30%;
+    background: #e6e6e6;
+    padding: 20px;
+}
+
+.main {
+    flex: 70%;
+    background: white;
+    padding: 20px;
+}
+.fakeimg {
+    background: #aaa;
+    width: 100%;
+    padding: 20px;
+}
+.footer {
+    padding: 20px;
     text-align: center;
-    background: #24252A;
+    background: #ddd;
+}
+
+@media screen and (max-width: 700px) {
+    .row {
+        flex-direction: column;
+    }
 }
